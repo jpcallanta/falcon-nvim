@@ -1,0 +1,23 @@
+# Cursor / IDE
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Neovim runtime (generated in config dir)
+undodir/
+
+# Optional: uncomment to ignore lockfile (recommended: commit lazy-lock.json for reproducible installs)
+# lazy-lock.json
+
+# Lua bytecode
+*.luac
+
+# Logs and temp
+*.log
+*.tmp
+.*.sw?
+
+# Local overrides (e.g. machine-specific or secrets)
+local.lua
