@@ -33,7 +33,6 @@ require('lazy').setup({
     require 'plugins.lualine',
     require 'plugins.neotest',
     require 'plugins.noice',
-    require 'plugins.python-venv',
     require 'plugins.render-markdown',
     require 'plugins.snacks',
     require 'plugins.treesitter',

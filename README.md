@@ -12,7 +12,7 @@ A modern Neovim config in Lua using the Lazy.nvim plugin manager.
 - **Testing**: Neotest for running and debugging tests (Go and Python support)
 - **Debugging**: DAP support with UI, configured for Go and Python development
 - **Git Integration**: Gitsigns for status indicators; Snacks for Git operations
-- **Python Support**: Virtual environment selector and type stubs helper
+- **Python Support**: Type stubs helper
 - **Syntax Highlighting**: Tree-sitter for enhanced syntax highlighting
 - **Status Line**: Lualine status line; Barbecue for context navigation
 - **Keymaps**: Which-key for keybindings (conflicts resolved, leader timeout)
@@ -83,8 +83,6 @@ A modern Neovim config in Lua using the Lazy.nvim plugin manager.
 - **[DAP-UI](https://github.com/rcarriga/nvim-dap-ui)** - Debug UI interface
 - **[DAP-Go](https://github.com/leoluz/nvim-dap-go)** - Go debugging support
 - **[DAP-Python](https://github.com/mfussenegger/nvim-dap-python)** - Python DAP
-- **[Venv-selector](https://github.com/linux-cultist/venv-selector.nvim)** -
-  Python venv selector
 
 ### Git Integration
 - **[Gitsigns](https://github.com/lewis6991/gitsigns.nvim)** - Git gutter status
@@ -109,7 +107,6 @@ Keymaps are defined in `lua/core/keymaps.lua`.
 | Testing    | `<leader>tt` run nearest test, `<leader>td` debug test |
 | Debug      | `<F5>` start/continue, `<F7>` toggle UI |
 | Terminal   | `<leader>tv` open terminal in split |
-| Python     | `<leader>cv` select venv |
 
 ## Theme
 
@@ -147,7 +144,6 @@ Configure in `lua/plugins/catppuccin.lua`.
 │   │   ├── lualine.lua
 │   │   ├── neotest.lua
 │   │   ├── noice.lua
-│   │   ├── python-venv.lua
 │   │   ├── render-markdown.lua
 │   │   ├── snacks.lua
 │   │   ├── treesitter.lua
@@ -163,7 +159,7 @@ Configure in `lua/plugins/catppuccin.lua`.
 - **Mason** installs LSPs and debuggers (e.g. Delve for Go) when you open files.
 - **Format on save** is enabled (Conform.nvim with LSP fallback).
 - Customize in `lua/user/`; use `<Space>?` (Which-key) to browse keybindings.
-- Python: `<leader>cv` select venv; `:PythonTypesInstallCommon` for type stubs.
+- Python: `:PythonTypesInstallCommon` for type stubs.
 - Testing: `<leader>tt` run test, `<leader>td` debug.
 
 ## Customization
