@@ -69,18 +69,27 @@ return {
         -- Setup global inlay hints toggle
         require('plugins.lsp.keymaps').setup_global_inlay_hints()
 
-        -- Setup LSP keymaps
+        local lsp_attach_group = vim.api.nvim_create_augroup('falcon-lsp-attach', { clear = true })
+        local highlight_augroup = vim.api.nvim_create_augroup('falcon-lsp-highlight', { clear = false })
+
+        -- Clear document highlight autocmds when LSP detaches from a buffer
+        vim.api.nvim_create_autocmd('LspDetach', {
+            group = lsp_attach_group,
+            callback = function(event)
+                vim.lsp.buf.clear_references()
+                vim.api.nvim_clear_autocmds { group = highlight_augroup, buffer = event.buf }
+            end,
+        })
+
         vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('falcon-lsp-attach', { clear = true }),
+            group = lsp_attach_group,
             callback = function(event)
                 require('plugins.lsp.keymaps').setup(event)
 
                 local bufnr = event.buf
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-                -- Setup document highlighting
                 if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, bufnr) then
-                    local highlight_augroup = vim.api.nvim_create_augroup('falcon-lsp-highlight', { clear = false })
                     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                         buffer = bufnr,
                         group = highlight_augroup,
@@ -92,16 +101,7 @@ return {
                         group = highlight_augroup,
                         callback = vim.lsp.buf.clear_references,
                     })
-
-                    vim.api.nvim_create_autocmd('LspDetach', {
-                        group = vim.api.nvim_create_augroup('falcon-lsp-detach', { clear = true }),
-                        callback = function(event2)
-                            vim.lsp.buf.clear_references()
-                            vim.api.nvim_clear_autocmds { group = 'falcon-lsp-highlight', buffer = event2.buf }
-                        end,
-                    })
                 end
-
             end,
         })
 

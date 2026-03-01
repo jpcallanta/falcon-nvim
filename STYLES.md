@@ -48,3 +48,4 @@ This file is the style guide for humans and coding agents editing this Neovim co
 
 - Run the linter after changes (e.g. stylua, luacheck, or editor lint).
 - Do not run tests in interactive mode for TUI apps; advise manual testing and paste or screenshot output if needed.
+- Code or Markdown should not exceed 80 character width. Either rephrase or use multiline as needed.

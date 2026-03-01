@@ -17,26 +17,32 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require('lazy').setup({
-    require 'plugins.actions-preview',
-    require 'plugins.autocomplete',
-    require 'plugins.autopairs',
-    require 'plugins.barbecue',
+    -- UI
     require 'plugins.bufferline',
-    require 'plugins.catppuccin',
-    require 'plugins.colorizer',
-    require 'plugins.conform',
-    require 'plugins.debug',
-    require 'plugins.fzf-lua',
-    require 'plugins.gitsigns',
-    require 'plugins.indent-blankline',
-    require 'plugins.lsp',
     require 'plugins.lualine',
-    require 'plugins.neotest',
+    require 'plugins.catppuccin',
+    require 'plugins.indent-blankline',
+    require 'plugins.barbecue',
+    require 'plugins.colorizer',
+    require 'plugins.which-key',
+    -- LSP and completion
+    require 'plugins.lsp',
+    require 'plugins.autocomplete',
+    require 'plugins.conform',
+    require 'plugins.actions-preview',
+    -- Editing
+    require 'plugins.autopairs',
+    require 'plugins.treesitter',
+    -- Tools
+    require 'plugins.snacks',
+    require 'plugins.fzf-lua',
     require 'plugins.noice',
     require 'plugins.render-markdown',
-    require 'plugins.snacks',
-    require 'plugins.treesitter',
-    require 'plugins.which-key',
+    -- Git
+    require 'plugins.gitsigns',
+    -- Test and debug
+    require 'plugins.neotest',
+    require 'plugins.debug',
 })
 
 -- Setup Python type stubs helper

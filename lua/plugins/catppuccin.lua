@@ -3,9 +3,8 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-        vim.g.catppuccin_flavour = "macchiato" -- set the flavour before setup
         require("catppuccin").setup({
-            flavour = "macchiato", -- latte, frappe, macchiato, mocha
+            flavour = "macchiato",
             background = { -- :h background
                 light = "latte",
                 dark = "macchiato",

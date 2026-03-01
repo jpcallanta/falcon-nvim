@@ -8,6 +8,7 @@ A modern Neovim config in Lua using the Lazy.nvim plugin manager.
 - **Fuzzy Finder**: Fzf-lua for file/search; Snacks for pickers and Git
 - **Fast Completion**: Blink.cmp with LSP integration and LuaSnip snippets
 - **Code Formatting**: Conform.nvim with format-on-save and LSP fallback
+  (C/C++ excluded by default; see `lua/plugins/conform.lua`)
 - **Code Actions**: Actions-preview for LSP code actions with preview
 - **Testing**: Neotest for running and debugging tests (Go and Python support)
 - **Debugging**: DAP support with UI, configured for Go and Python development
@@ -113,6 +114,10 @@ Keymaps are defined in `lua/core/keymaps.lua`.
 **Catppuccin Macchiato**: transparent bg, italic comments, plugin integration.
 Configure in `lua/plugins/catppuccin.lua`.
 
+**Statusline**: Lualine theme is separate from the colorscheme. Set
+`NVIM_THEME=onedark` or `NVIM_THEME=nord` (default) to choose the statusline
+look; see `lua/plugins/lualine.lua`.
+
 ## Configuration Structure
 
 ```
@@ -157,7 +162,9 @@ Configure in `lua/plugins/catppuccin.lua`.
 
 - Install a **Nerd Font** (e.g. JetBrains Mono, Fira Code) for icons.
 - **Mason** installs LSPs and debuggers (e.g. Delve for Go) when you open files.
-- **Format on save** is enabled (Conform.nvim with LSP fallback).
+- **Format on save** is enabled (Conform.nvim with LSP fallback). C/C++ are
+  excluded by default; adjust `format_on_save` in `lua/plugins/conform.lua`
+  if needed.
 - Customize in `lua/user/`; use `<Space>?` (Which-key) to browse keybindings.
 - Python: `:PythonTypesInstallCommon` for type stubs.
 - Testing: `<leader>tt` run test, `<leader>td` debug.
@@ -171,7 +178,13 @@ Create a new file in `lua/plugins/` and add it to the plugin list in `init.lua`.
 Edit `lua/core/keymaps.lua` to customize keybindings.
 
 ### Changing Theme
-Modify `lua/plugins/catppuccin.lua` to change theme settings.
+Modify `lua/plugins/catppuccin.lua` to change theme settings. For the
+statusline only, set the `NVIM_THEME` env var (e.g. `onedark` or `nord`).
+
+### Diagnostic Signs (Nerd Font)
+Diagnostic signs use Nerd Font glyphs when `vim.g.have_nerd_font` is set
+(in `lua/core/options.lua`). Set it to `false` there if you do not use a
+Nerd Font.
 
 ## Requirements
 

@@ -8,32 +8,32 @@ vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', { desc = 'Quit' })
 vim.keymap.set('n', 'x', '"_x', { desc = 'Delete without yanking' })
 
 -- Buffers
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = 'Next buffer' })
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Previous buffer' })
-vim.keymap.set('n', '<leader>x', ':bdelete!<CR>', { desc = 'Delete buffer' })
+vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('n', '<leader>x', '<cmd>bdelete!<CR>', { desc = 'Delete buffer' })
 vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', { desc = 'New buffer' })
 
 -- Window management
 vim.keymap.set('n', '<leader>v', '<C-w>v', { desc = 'Split window vertically' })
 vim.keymap.set('n', '<leader>h', '<C-w>s', { desc = 'Split window horizontally' })
-vim.keymap.set('n', '<leader>xs', ':close<CR>', { desc = 'Close current window' })
-vim.keymap.set('n', '<leader><Up>', ':wincmd k<CR>', { desc = 'Move to window above' })
-vim.keymap.set('n', '<leader><Down>', ':wincmd j<CR>', { desc = 'Move to window below' })
-vim.keymap.set('n', '<leader><Left>', ':wincmd h<CR>', { desc = 'Move to window on the left' })
-vim.keymap.set('n', '<leader><Right>', ':wincmd l<CR>', { desc = 'Move to window on the right' })
-vim.keymap.set('n', '<leader>rw', ':vertical resize +20<CR>', { desc = 'Vertical resize +20' })
-vim.keymap.set('n', '<leader>rW', ':vertical resize -20<CR>', { desc = 'Vertical resize -20' })
-vim.keymap.set('n', '<leader>rh', ':horizontal resize +20<CR>', { desc = 'Horizontal resize +20' })
-vim.keymap.set('n', '<leader>rH', ':horizontal resize -20<CR>', { desc = 'Horizontal resize -20' })
+vim.keymap.set('n', '<leader>xs', '<cmd>close<CR>', { desc = 'Close current window' })
+vim.keymap.set('n', '<leader><Up>', '<cmd>wincmd k<CR>', { desc = 'Move to window above' })
+vim.keymap.set('n', '<leader><Down>', '<cmd>wincmd j<CR>', { desc = 'Move to window below' })
+vim.keymap.set('n', '<leader><Left>', '<cmd>wincmd h<CR>', { desc = 'Move to window on the left' })
+vim.keymap.set('n', '<leader><Right>', '<cmd>wincmd l<CR>', { desc = 'Move to window on the right' })
+vim.keymap.set('n', '<leader>rw', '<cmd>vertical resize +20<CR>', { desc = 'Vertical resize +20' })
+vim.keymap.set('n', '<leader>rW', '<cmd>vertical resize -20<CR>', { desc = 'Vertical resize -20' })
+vim.keymap.set('n', '<leader>rh', '<cmd>horizontal resize +20<CR>', { desc = 'Horizontal resize +20' })
+vim.keymap.set('n', '<leader>rH', '<cmd>horizontal resize -20<CR>', { desc = 'Horizontal resize -20' })
 
 -- Tabs
-vim.keymap.set('n', '<leader>ta', ':tabnew<CR>', { desc = 'Open new tab' })
-vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', { desc = 'Close current tab' })
-vim.keymap.set('n', '<leader>tn', ':tabn<CR>', { desc = 'Next tab' })
-vim.keymap.set('n', '<leader>tp', ':tabp<CR>', { desc = 'Previous tab' })
+vim.keymap.set('n', '<leader>ta', '<cmd>tabnew<CR>', { desc = 'Open new tab' })
+vim.keymap.set('n', '<leader>tx', '<cmd>tabclose<CR>', { desc = 'Close current tab' })
+vim.keymap.set('n', '<leader>tn', '<cmd>tabn<CR>', { desc = 'Next tab' })
+vim.keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { desc = 'Previous tab' })
 
 -- Toggles
-vim.keymap.set('n', '<leader>nh', ':noh<CR>', { desc = 'Clear search highlights' })
+vim.keymap.set('n', '<leader>nh', '<cmd>noh<CR>', { desc = 'Clear search highlights' })
 
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv', { desc = 'Decrease indent and stay in visual mode' })

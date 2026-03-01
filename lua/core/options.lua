@@ -19,6 +19,7 @@ vim.opt.breakindent = true
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.linebreak = true
+vim.opt.number = true
 vim.opt.numberwidth = 4
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 4
@@ -27,7 +28,6 @@ vim.opt.sidescrolloff = 4
 vim.opt.showbreak = "↳ "
 vim.opt.textwidth = 80
 vim.opt.wrap = false
-vim.wo.number = true
 
 -- =============================================================================
 -- Search behavior
@@ -78,6 +78,7 @@ vim.opt.splitright = true
 -- =============================================================================
 -- Appearance and colors
 -- =============================================================================
+vim.g.have_nerd_font = true
 vim.opt.background = "dark"
 vim.opt.belloff = "all"
 vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
