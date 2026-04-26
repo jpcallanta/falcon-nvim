@@ -52,7 +52,7 @@ vim.opt.backup = false
 vim.opt.fileencoding = "utf-8"
 vim.opt.hidden = true
 vim.opt.swapfile = false
-vim.opt.writebackup = true
+vim.opt.writebackup = false
 
 -- =============================================================================
 -- Completion

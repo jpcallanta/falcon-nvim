@@ -1,4 +1,5 @@
 local M = {}
+M._is_setup = false
 
 -- Common type stub packages for popular libraries
 local common_type_stubs = {
@@ -125,6 +126,11 @@ end
 
 -- Setup user commands
 function M.setup()
+    if M._is_setup then
+
+        return
+    end
+
     vim.api.nvim_create_user_command('PythonTypesInstall', function(opts)
         if not opts.args or opts.args == '' then
             vim.notify('Usage: :PythonTypesInstall <package-name>', vim.log.levels.ERROR)
@@ -148,6 +154,8 @@ function M.setup()
     vim.api.nvim_create_user_command('PythonTypesList', function()
         M.show_available_stubs()
     end, { desc = 'Show available Python type stub packages' })
+
+    M._is_setup = true
 end
 
 return M
