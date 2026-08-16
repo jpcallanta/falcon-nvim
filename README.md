@@ -35,7 +35,12 @@ A modern Neovim config in Lua using the Lazy.nvim plugin manager.
 
 2. **Clone this repository**:
    ```bash
-   git clone https://codeberg.org/pwnderpants/falcon-nvim ~/.config/nvim
+   git clone https://github.com/jpcallanta/falcon-nvim.git ~/.config/nvim
+   ```
+
+   Or with SSH:
+   ```bash
+   git clone git@github.com:jpcallanta/falcon-nvim.git ~/.config/nvim
    ```
 
 3. **Start Neovim**:
@@ -122,6 +127,7 @@ look; see `lua/plugins/lualine.lua`.
 ```
 ~/.config/nvim/
 ├── init.lua              # Main entry point, loads Lazy.nvim
+├── STYLES.md             # Style guide for editing this config
 ├── lua/
 │   ├── core/
 │   │   ├── options.lua   # Neovim options and settings
@@ -129,6 +135,8 @@ look; see `lua/plugins/lualine.lua`.
 │   ├── plugins/          # Plugin configurations
 │   │   ├── lsp/          # LSP configurations
 │   │   │   ├── diagnostics.lua
+│   │   │   ├── godot.lua
+│   │   │   ├── handlers.lua
 │   │   │   ├── keymaps.lua
 │   │   │   ├── mason.lua
 │   │   │   └── servers.lua
@@ -193,7 +201,9 @@ Nerd Font.
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+Feel free to submit issues and enhancement requests! Before editing this
+config, please read `STYLES.md` for the style guide (Lua formatting, comments,
+and plugin spec conventions).
 
 ## License
 

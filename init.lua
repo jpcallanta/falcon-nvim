@@ -24,6 +24,7 @@ require("lazy").setup({
 	require("plugins.colorizer"),
 	require("plugins.which-key"),
 	-- LSP and completion
+	require("plugins.treesitter"),
 	require("plugins.lsp"),
 	require("plugins.autocomplete"),
 	require("plugins.conform"),
@@ -33,6 +34,7 @@ require("lazy").setup({
 	-- Tools
 	require("plugins.snacks"),
 	require("plugins.noice"),
+	require("plugins.render-markdown"),
 	-- Git
 	require("plugins.gitsigns"),
 	-- Test and debug
