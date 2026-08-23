@@ -3,6 +3,9 @@ return {
     lazy = false,
     build = ':TSUpdate',
     config = function()
+        -- Use gcc instead of cl.exe on Windows
+        require("nvim-treesitter.install").compilers = { "gcc" }
+
         require('nvim-treesitter').setup {
             install_dir = vim.fn.stdpath('data') .. '/site',
         }
@@ -30,12 +33,12 @@ return {
                 'python',
                 'markdown',
                 'json',
-            'xml',
-            'typescript',
-            'javascript',
-            'make',
-            'yaml',
-        },
+                'xml',
+                'typescript',
+                'javascript',
+                'make',
+                'yaml',
+            },
             callback = function()
                 vim.treesitter.start()
             end,
