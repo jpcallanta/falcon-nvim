@@ -1,5 +1,6 @@
 require("core.options")
 require("core.keymaps")
+require("core.autocmd")
 
 vim.opt.termguicolors = true
 
@@ -41,13 +42,4 @@ require("lazy").setup({
 	require("plugins.gitsigns"),
 	-- Test and debug
 	require("plugins.debug"),
-})
-
--- Load Python type stubs helper only for Python buffers
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python" },
-	once = true,
-	callback = function()
-		require("user.python-types").setup()
-	end,
 })

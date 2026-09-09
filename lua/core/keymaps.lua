@@ -63,3 +63,11 @@ vim.keymap.set('n', '<leader>ct', '<cmd>retab<CR>', { desc = 'Convert tabs to sp
 vim.api.nvim_create_user_command('ConvertTabsToSpaces', function()
     vim.cmd('retab')
 end, { desc = 'Convert all tabs to spaces in the current buffer' })
+
+-- Line endings (fileformat)
+vim.keymap.set('n', '<leader>leu', '<cmd>set fileformat=unix | write<CR>', { desc = 'Convert to LF (unix) and save' })
+vim.keymap.set('n', '<leader>led', '<cmd>set fileformat=dos | write<CR>', { desc = 'Convert to CRLF (dos) and save' })
+vim.keymap.set('n', '<leader>let', function()
+    vim.bo.fileformat = vim.bo.fileformat == 'unix' and 'dos' or 'unix'
+    vim.cmd('write')
+end, { desc = 'Toggle line ending and save' })
