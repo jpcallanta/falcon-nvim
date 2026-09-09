@@ -2,46 +2,12 @@ return {
     'nvim-lualine/lualine.nvim',
     config = function()
         -- Adapted from: https://github.com/nvim-lualine/lualine.nvim/blob/master/lua/lualine/themes/onedark.lua
-        local colors = {
-            blue = '#61afef',
-            green = '#98c379',
-            purple = '#c678dd',
-            cyan = '#56b6c2',
-            red1 = '#e06c75',
-            red2 = '#be5046',
-            yellow = '#e5c07b',
-            fg = '#abb2bf',
-            bg = '#282c34',
-            gray1 = '#828997',
-            gray2 = '#2c323c',
-            gray3 = '#3e4452',
-        }
-
-        local onedark_theme = {
-            normal = {
-                a = { fg = colors.bg, bg = colors.green, gui = 'bold' },
-                b = { fg = colors.fg, bg = colors.gray3 },
-                c = { fg = colors.fg, bg = colors.gray2 },
-            },
-            command = { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
-            insert = { a = { fg = colors.bg, bg = colors.blue, gui = 'bold' } },
-            visual = { a = { fg = colors.bg, bg = colors.purple, gui = 'bold' } },
-            terminal = { a = { fg = colors.bg, bg = colors.cyan, gui = 'bold' } },
-            replace = { a = { fg = colors.bg, bg = colors.red1, gui = 'bold' } },
-            inactive = {
-                a = { fg = colors.gray1, bg = colors.bg, gui = 'bold' },
-                b = { fg = colors.gray1, bg = colors.bg },
-                c = { fg = colors.gray1, bg = colors.gray2 },
-            },
-        }
-
-        -- Statusline theme (independent of main colorscheme): set NVIM_THEME=onedark or NVIM_THEME=nord
-        local env_var_nvim_theme = os.getenv 'NVIM_THEME' or 'nord'
-
+        -- Statusline theme: use the theme shipped with the colorscheme so the
+        -- statusline always matches gruvbox-material
         local themes = {
-            onedark = onedark_theme,
-            nord = 'nord',
+            gruvbox = 'gruvbox-material',
         }
+        local env_var_nvim_theme = os.getenv 'NVIM_THEME' or 'gruvbox'
 
         local mode = {
             'mode',
@@ -95,7 +61,13 @@ return {
                 lualine_a = { mode },
                 lualine_b = { 'branch' },
                 lualine_c = { filename },
-                lualine_x = { diagnostics, diff, { 'encoding', cond = hide_in_width }, { 'filetype', cond = hide_in_width } },
+                lualine_x = {
+                    diagnostics,
+                    diff,
+                    'fileformat', -- always show the line ending
+                    { 'encoding', cond = hide_in_width },
+                    { 'filetype', cond = hide_in_width },
+                },
                 lualine_y = { 'location' },
                 lualine_z = { 'progress' },
             },

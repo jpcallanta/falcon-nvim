@@ -12,5 +12,9 @@ return {
                 padding = { 1, 2, 1, 2 },
             },
         })
+
+        wk.add({
+            { '<leader>le', group = 'Line endings' },
+        })
     end,
 }
