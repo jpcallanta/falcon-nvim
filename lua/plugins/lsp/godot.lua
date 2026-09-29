@@ -8,25 +8,18 @@ function M.setup(capabilities, servers)
         return
     end
 
-    local has_socat = vim.fn.executable('socat') == 1
-    local has_nc = vim.fn.executable('nc') == 1
-    if not has_socat and not has_nc then
-        vim.notify('Godot LSP requires socat or nc to connect via TCP. Install with: sudo apt install socat', vim.log.levels.WARN)
-
-        return
-    end
+    -- Transport is provided by vim.lsp.rpc.connect (see servers.lua), so no
+    -- external socat/nc bridge is needed before registering the server.
 
     godot_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, godot_config.capabilities or {})
 
-    local cmd_func = godot_config.cmd
-    local actual_cmd = nil
-    if type(cmd_func) == 'function' then
-        actual_cmd = cmd_func()
-    else
-        actual_cmd = cmd_func
-    end
-
-    if not actual_cmd or #actual_cmd == 0 then
+    -- nvim accepts `cmd` as either an argv list (table) or an RPC client factory
+    -- (function, e.g. the result of vim.lsp.rpc.connect). Validate both forms
+    -- without indexing a function with `#`.
+    local actual_cmd = godot_config.cmd
+    local cmd_valid = actual_cmd ~= nil
+        and (type(actual_cmd) == 'function' or (type(actual_cmd) == 'table' and #actual_cmd > 0))
+    if not cmd_valid then
         vim.notify('Godot LSP: Invalid command configuration', vim.log.levels.ERROR)
 
         return
@@ -45,8 +38,6 @@ function M.setup(capabilities, servers)
             },
         }
     end
-
-    godot_config.cmd = actual_cmd
 
     local original_on_init = godot_config.on_init
     godot_config.on_init = function(client, initialize_result)
