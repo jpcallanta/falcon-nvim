@@ -29,11 +29,15 @@ vim.api.nvim_create_autocmd("FileType", {
 -- =============================================================================
 -- Filetype indentation
 -- =============================================================================
--- GDScript: enforce spaces for indentation
+-- GDScript: TAB indentation. GDScript's style guide uses tabs, the Godot
+-- editor defaults to tabs (EditorSettings indent/type = Tabs, with
+-- convert_indent_on_save), and gdformat (conform.nvim) emits tabs. Matching
+-- them prevents mixed-indent churn and Godot's LSP diagnostic:
+--   "Used tab character for indentation instead of space as used before".
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "gdscript", "gd" },
 	callback = function()
-		vim.bo.expandtab = true
+		vim.bo.expandtab = false
 		vim.bo.tabstop = 4
 		vim.bo.shiftwidth = 4
 		vim.bo.softtabstop = 4

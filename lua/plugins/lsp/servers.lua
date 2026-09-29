@@ -197,23 +197,16 @@ M.servers = {
     },
     bashls = {},
     godot_lsp = {
-        cmd = function()
-            -- Check for socat first (preferred for bidirectional TCP)
-            if vim.fn.executable('socat') == 1 then
-                return { 'socat', 'STDIO', 'TCP:localhost:6008' }
-            end
-
-            -- Fallback to nc (netcat) if socat is not available
-            -- Note: nc may not work well for bidirectional LSP communication
-            if vim.fn.executable('nc') == 1 then
-                -- Use nc with -N flag for better behavior (close on EOF)
-                return { 'nc', '-N', 'localhost', '6008' }
-            end
-
-            -- Return a dummy command that will fail gracefully
-            -- This prevents nil errors but will show a connection error
-            return { 'sh', '-c', 'echo "socat or nc required for Godot LSP" && exit 1' }
-        end,
+        -- Godot's editor hosts a GDScript language server on TCP while a project
+        -- is open (EditorSettings network/language_server/remote_port, default
+        -- 6005). Neovim >= 0.10 speaks TCP natively via vim.lsp.rpc.connect, so
+        -- no socat/nc stdio bridge is required. Override the port with the
+        -- GDScript_Port environment variable if you changed it in Godot.
+        --
+        -- NOTE: this is the RPC client factory itself, NOT a thunk. nvim accepts
+        -- either an argv table or a function here; godot.lua passes it straight
+        -- through, so do not wrap it in function() ... end.
+        cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(vim.env.GDScript_Port or '6005')),
         root_dir = function(fname)
             -- Use current working directory or file directory as root
             return vim.fn.getcwd()
