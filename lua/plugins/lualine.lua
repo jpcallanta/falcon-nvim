@@ -3,12 +3,7 @@ return {
     config = function()
         -- Adapted from: https://github.com/nvim-lualine/lualine.nvim/blob/master/lua/lualine/themes/onedark.lua
         -- Statusline theme: use the theme shipped with the colorscheme so the
-        -- statusline always matches gruvbox-material
-        local themes = {
-            gruvbox = 'gruvbox-material',
-        }
-        local env_var_nvim_theme = os.getenv 'NVIM_THEME' or 'gruvbox'
-
+        -- statusline always matches catppuccin
         local mode = {
             'mode',
             fmt = function(str)
@@ -48,7 +43,7 @@ return {
         require('lualine').setup {
             options = {
                 icons_enabled = true,
-                theme = themes[env_var_nvim_theme], -- Set theme based on environment variable
+                theme = 'catppuccin-nvim', -- Follows the configured catppuccin flavour
                 -- Some useful glyphs:
                 -- https://www.nerdfonts.com/cheat-sheet
                 --        

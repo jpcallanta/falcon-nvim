@@ -19,8 +19,8 @@ require("lazy").setup({
 	-- UI
 	require("plugins.bufferline"),
 	require("plugins.lualine"),
-	-- require("plugins.catppuccin"),
-	require("plugins.gruvbox-material"),
+	require("plugins.catppuccin"),
+	-- require("plugins.gruvbox-material"),
 	require("plugins.indent-blankline"),
 	require("plugins.barbecue"),
 	require("plugins.colorizer"),

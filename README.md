@@ -118,9 +118,9 @@ Keymaps are defined in `lua/core/keymaps.lua`.
 **Catppuccin Macchiato**: transparent bg, italic comments, plugin integration.
 Configure in `lua/plugins/catppuccin.lua`.
 
-**Statusline**: Lualine theme is separate from the colorscheme. Set
-`NVIM_THEME=onedark` or `NVIM_THEME=nord` (default) to choose the statusline
-look; see `lua/plugins/lualine.lua`.
+**Statusline**: Lualine uses the `catppuccin-nvim` theme, so it follows the
+configured catppuccin flavour and transparency automatically; see
+`lua/plugins/lualine.lua`.
 
 ## Configuration Structure
 
@@ -181,8 +181,8 @@ Create a new file in `lua/plugins/` and add it to the plugin list in `init.lua`.
 Edit `lua/core/keymaps.lua` to customize keybindings.
 
 ### Changing Theme
-Modify `lua/plugins/catppuccin.lua` to change theme settings. For the
-statusline only, set the `NVIM_THEME` env var (e.g. `onedark` or `nord`).
+Modify `lua/plugins/catppuccin.lua` to change theme settings. The statusline
+follows the same flavour automatically.
 
 ### Diagnostic Signs (Nerd Font)
 Diagnostic signs use Nerd Font glyphs when `vim.g.have_nerd_font` is set
